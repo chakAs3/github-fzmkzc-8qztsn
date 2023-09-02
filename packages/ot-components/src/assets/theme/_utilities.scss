@@ -1,0 +1,194 @@
+// Inspired by Bootstrap 5.2
+// https://github.com/twbs/bootstrap/blob/3bd57564140ef3953582a80e8f1084d81bdb5977/scss/_utilities.scss
+$spacer: 1rem !default;
+
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer * 1.0,
+  4: $spacer * 1.5,
+  5: $spacer * 2.0,
+  6: $spacer * 2.5,
+  7: $spacer * 3.0,
+  8: $spacer * 3.5,
+  9: $spacer * 4.0,
+);
+
+$utilities: (
+  // Margin utilities
+  'margin':
+    (
+      responsive: true,
+      property: margin,
+      class: m,
+      values:
+        map-merge(
+          $spacers,
+          (
+            auto: auto
+          )
+        )
+    ),
+  'margin-x': (
+    responsive: true,
+    property: margin-right margin-left,
+    class: mx,
+    values:
+      map-merge(
+        $spacers,
+        (
+          auto: auto
+        )
+      )
+  ),
+  'margin-y': (
+    responsive: true,
+    property: margin-top margin-bottom,
+    class: my,
+    values:
+      map-merge(
+        $spacers,
+        (
+          auto: auto
+        )
+      )
+  ),
+  'margin-top': (
+    responsive: true,
+    property: margin-top,
+    class: mt,
+    values:
+      map-merge(
+        $spacers,
+        (
+          auto: auto
+        )
+      )
+  ),
+  'margin-end': (
+    responsive: true,
+    property: margin-right,
+    class: mr,
+    values:
+      map-merge(
+        $spacers,
+        (
+          auto: auto
+        )
+      )
+  ),
+  'margin-bottom': (
+    responsive: true,
+    property: margin-bottom,
+    class: mb,
+    values:
+      map-merge(
+        $spacers,
+        (
+          auto: auto
+        )
+      )
+  ),
+  'margin-start': (
+    responsive: true,
+    property: margin-left,
+    class: ml,
+    values:
+      map-merge(
+        $spacers,
+        (
+          auto: auto
+        )
+      )
+  ),
+  // Padding utilities
+  'padding':
+    (
+      responsive: true,
+      property: padding,
+      class: p,
+      values: $spacers
+    ),
+  'padding-x': (
+    responsive: true,
+    property: padding-right padding-left,
+    class: px,
+    values: $spacers
+  ),
+  'padding-y': (
+    responsive: true,
+    property: padding-top padding-bottom,
+    class: py,
+    values: $spacers
+  ),
+  'padding-top': (
+    responsive: true,
+    property: padding-top,
+    class: pt,
+    values: $spacers
+  ),
+  'padding-end': (
+    responsive: true,
+    property: padding-right,
+    class: pr,
+    values: $spacers
+  ),
+  'padding-bottom': (
+    responsive: true,
+    property: padding-bottom,
+    class: pb,
+    values: $spacers
+  ),
+  'padding-start': (
+    responsive: true,
+    property: padding-left,
+    class: pl,
+    values: $spacers
+  )
+);
+
+@mixin generate-utility($utility) {
+  $values: map-get($utility, values);
+
+  @each $key, $value in $values {
+    $properties: map-get($utility, property);
+
+    // Multiple properties are possible, for example with vertical or horizontal margins or paddings
+    @if type-of($properties) == 'string' {
+      $properties: append((), $properties);
+    }
+
+    // Use custom class if present
+    $property-class: if(
+      map-has-key($utility, class),
+      map-get($utility, class),
+      nth($properties, 1)
+    );
+    $property-class: if($property-class == null, '', $property-class);
+
+    // Use custom CSS variable name if present, otherwise default to `class`
+    $css-variable-name: if(
+      map-has-key($utility, css-variable-name),
+      map-get($utility, css-variable-name),
+      map-get($utility, class)
+    );
+
+    // Don't prefix if value key is null (e.g. with shadow class)
+    $property-class-modifier: if(
+      $key,
+      if($property-class == '', '', '-') + $key,
+      ''
+    );
+
+    .#{$property-class + $property-class-modifier} {
+      @each $property in $properties {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+@each $key, $utility in $utilities {
+  @include generate-utility($utility);
+}

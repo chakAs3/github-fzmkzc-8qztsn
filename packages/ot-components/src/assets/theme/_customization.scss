@@ -1,0 +1,180 @@
+/* Customizations to the designer theme should be defined here */
+
+// https://primefaces.org/primevue/checkbox
+.p-checkbox .p-checkbox-box {
+  border-radius: 3px;
+}
+
+// https://primefaces.org/primevue/dialog
+.p-dialog-content label ~ .p-inputtext {
+  margin-bottom: 0.625rem;
+}
+
+.p-dialog .p-dialog-footer button {
+  margin: 0px;
+}
+
+// https://primefaces.org/primevue/dropdown
+.p-dropdown-panel {
+  font-size: 14px;
+  padding: 5px 0;
+  .p-dropdown-items {
+    .p-dropdown-item,
+    .p-dropdown-item-group,
+    .p-dropdown-empty-message {
+      padding: 8px 15px;
+    }
+  }
+  .p-dropdown-header {
+    padding: 0 5px 5px;
+    border-bottom: 0;
+  }
+}
+
+// https://primefaces.org/primevue/multiselect
+.p-multiselect {
+  .p-multiselect-label {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
+.p-inputwrapper-filled.p-multiselect.p-multiselect-chip .p-multiselect-label {
+  padding: 5px 0;
+  .p-multiselect-token {
+    padding: 3px 7px;
+    margin: 0 0 0 10px;
+  }
+}
+.p-multiselect-panel {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  .p-multiselect-items {
+    font-size: 14px;
+    .p-multiselect-item {
+      padding: 8px 15px;
+    }
+  }
+}
+
+// https://primefaces.org/primevue/inputswitch
+.p-inputswitch {
+  width: 48px;
+  height: 24px;
+  .p-inputswitch-slider {
+    border-radius: 50px;
+    &:before {
+      width: 18px;
+      height: 18px;
+      left: 3px;
+      margin-top: -9px;
+      border-radius: 50%;
+      transition-duration: 0.2s;
+    }
+  }
+}
+.p-inputswitch.p-inputswitch-checked {
+  .p-inputswitch-slider:before {
+    transform: translateX(24px);
+  }
+}
+
+// https://primefaces.org/primevue/message
+.p-message {
+  margin: 1rem 0;
+  .p-message-wrapper {
+    align-items: flex-start;
+    padding: 1rem 1rem;
+  }
+  .p-message-close-icon {
+    color: black;
+  }
+  .p-message-text {
+    font-weight: normal;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+  .p-message-icon {
+    font-size: 1.3rem;
+    margin: 0.125rem 1rem 0 0;
+  }
+}
+.p-message .p-message-close {
+  height: auto;
+  width: auto;
+}
+
+// https://primefaces.org/primevue/panel
+.p-panel-title {
+  width: 100%;
+}
+.p-panel-title .p-message {
+  margin-top: 0;
+}
+
+.panel .p-message {
+  margin-top: 0;
+}
+
+// https://primefaces.org/primevue/calendar
+.p-button.p-button-icon-only.p-datepicker-trigger {
+  width: 2.5rem;
+  padding: 0;
+}
+.p-datepicker table td > span {
+  height: 2rem;
+  border-radius: 50px;
+}
+.p-datepicker table td > span.p-highlight {
+  color: white;
+  background: #1e39d2;
+}
+.p-datepicker table td.p-datepicker-today > span.p-highlight {
+  color: white;
+  background: #1e39d2;
+}
+.p-datepicker .p-timepicker {
+  padding: 0.5rem 0 0 0;
+  span {
+    font-size: 1rem;
+  }
+  button:last-child {
+    margin-top: 0;
+  }
+}
+.time-input {
+  border: none;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 1rem;
+  width: 2rem;
+  padding: 0;
+}
+
+// https://primefaces.org/primevue/carousel
+.carousel-image-dialog-container {
+  .p-dialog-header {
+    padding: 0.5rem 0 0 1rem;
+  }
+  .p-dialog-content {
+    display: flex;
+    padding: 0 1rem 1rem;
+  }
+}
+
+// https://primefaces.org/primevue/toast
+.p-toast {
+  .p-toast-message.p-toast-message-warn {
+    background: rgb(254, 249, 232) !important;
+  }
+  .p-toast-message.p-toast-message-error {
+    background: rgb(253, 244, 244) !important;
+  }
+  .p-toast-message.p-toast-message-info {
+    background: rgb(242, 246, 253) !important;
+  }
+  .p-toast-message.p-toast-message-success {
+    background: rgb(244, 249, 245) !important;
+  }
+}

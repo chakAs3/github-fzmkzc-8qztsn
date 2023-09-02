@@ -1,0 +1,3 @@
+#!/bin/sh
+mkdir -p packages/stories/public
+yarn workspace stories storybook
